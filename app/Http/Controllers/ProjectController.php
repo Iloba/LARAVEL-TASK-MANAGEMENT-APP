@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\TaskController;
 
 class ProjectController extends Controller
 {
@@ -26,6 +27,20 @@ class ProjectController extends Controller
 
         //Redirect back with message
         return redirect()->back()->with('success', 'Project Created Succcessfully');
+    }
+
+
+    
+
+
+    //Show Project
+    public function show_project($id){
+        $project = Project::find($id);
+
+        return view('pages.project_page', [
+            'project' => $project,
+            
+        ]);
     }
 
 

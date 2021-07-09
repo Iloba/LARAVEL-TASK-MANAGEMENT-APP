@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserProjectController;
 
@@ -28,7 +29,19 @@ Route::post('/home', [ProjectController::class, 'create'])->name('create_project
 //Prefix all other routes
 Route::prefix('/home')->group(function(){
 
+//All projects
 Route::get('/projects', [UserProjectController::class, 'getAllProjects'])->name('allprojects');
+
+//Show Projects
+Route::get('/project/{id}', [ProjectController::class, 'show_project'])->name('show_project');
+
+//Add task to  projects
+Route::post('/project/{id}/task', [TaskController::class, 'create'])->name('add_task');
+
+//get tasks 
+Route::get('/tasks', [TaskController::class, 'getAll'])->name('alltasks');
+
+
 
 });
 
