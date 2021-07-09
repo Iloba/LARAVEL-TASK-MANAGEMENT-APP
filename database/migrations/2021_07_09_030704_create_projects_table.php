@@ -18,6 +18,8 @@ class CreateProjectsTable extends Migration
             
             $table->string('project_name');
             $table->string('project_description');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

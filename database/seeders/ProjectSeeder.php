@@ -21,6 +21,7 @@ class ProjectSeeder extends Seeder
         DB::table('projects')->insert([
             'project_name' => Str::random(10),
             'project_description' => Str::random(20),
+            'user_id' => 1
             
         ]);
     }

@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Task;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class TaskSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,14 +15,12 @@ class TaskSeeder extends Seeder
      * @return void
      */
     public function run()
-    
     {
         //
-        DB::table('tasks')->insert([
-            'task_name' => Str::random(10),
-            'priority' => Str::random(20),
-            'project_id' => 3
-            
+        DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10).'@gmail.com',
+            'password' => Hash::make('password'),
         ]);
     }
 }
