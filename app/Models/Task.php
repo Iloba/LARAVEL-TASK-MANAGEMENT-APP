@@ -10,8 +10,8 @@ class Task extends Model
 {
     use HasFactory;
 
-    //Relationship
+    //relationship
     public function project(){
-       return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class);
     }
 }
