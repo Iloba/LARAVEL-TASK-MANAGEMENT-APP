@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -2128,7 +2128,7 @@ pre code {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  /* border-radius: 0.25rem; */
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -2153,7 +2153,7 @@ pre code {
   background-color: #fff;
   border-color: #a1cbef;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  /* box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25); */
 }
 
 .form-control::-moz-placeholder {
@@ -10903,4 +10903,13 @@ a.text-dark:focus {
   }
 }
 
+/* My style */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul li{
+  list-style-type: none;
+}
 

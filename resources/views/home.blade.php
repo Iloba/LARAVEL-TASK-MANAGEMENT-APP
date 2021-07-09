@@ -5,16 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard') }} | <a href="{{route('allprojects')}}">My Projects</a> | <a href="#">My Tasks</a></div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @include('layouts.messages')
+                    <div class="form-section p-3">
+                        <h2 class="mb-3">Create Project</h2>
+                        <form action="{{route('create_project')}}" method="POST">
+                            @csrf
+                            <input type="text" name="project_name" class="form-control mb-3" placeholder="Project Name">
+                            <textarea name="project_description" class="form-control mb-3" id="" cols="30" rows="4" placeholder="Enter Project Description"></textarea>
+                            <button type="submit" class="btn btn-info">Create Project</button>
+                        </form>
+                    </div>
 
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>

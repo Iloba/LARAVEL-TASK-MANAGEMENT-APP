@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UserProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+//Create Project
+Route::post('/home', [ProjectController::class, 'create'])->name('create_project');
+
+
+//Prefix all other routes
+Route::prefix('/home')->group(function(){
+
+Route::get('/projects', [UserProjectController::class, 'getAllProjects'])->name('allprojects');
+
+});
+
+
+
+
 
 Auth::routes();
 

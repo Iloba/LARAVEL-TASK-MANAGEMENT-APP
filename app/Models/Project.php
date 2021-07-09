@@ -11,6 +11,12 @@ class Project extends Model
 {
     use HasFactory;
 
+    //Fillable
+    protected $fillable = [
+        'project_name',
+        'project_description'
+    ];
+
     public function tasks(){
         $this->hasMany(Task::class);
     }
