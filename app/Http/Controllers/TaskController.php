@@ -33,7 +33,7 @@ class TaskController extends Controller
 
     //get all tasks by project relationship
     public function getAll(){
-        $tasks = Project::find(8)->tasks;
+        $tasks = Project::find(9)->tasks;
 
         return view('pages.tasks', [
             'tasks' => $tasks
@@ -66,6 +66,11 @@ class TaskController extends Controller
     }
 
     public function delete($id){
-        return 'hello';
+        $task = Task::find($id);
+        
+        $task->delete();
+
+        //redirect back
+        return redirect()->route('alltasks')->with('success', 'Task successfully Deleted');
     }
 }
