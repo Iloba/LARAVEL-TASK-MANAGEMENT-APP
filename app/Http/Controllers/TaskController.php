@@ -31,13 +31,29 @@ class TaskController extends Controller
          return back()->with('success', 'Task added successfully');
     }
 
-    //get all tasks
+    //get all tasks by project relationship
     public function getAll(){
-        $tasks = Project::find(5)->tasks;
+        $tasks = Project::find(8)->tasks;
 
         return view('pages.tasks', [
             'tasks' => $tasks
         ]);
       
+    }
+
+    //Edit task
+    public function editTask($id){
+        $task = Task::find($id);
+
+       
+
+        return view('pages.edit_task', [
+            'task' => $task
+        ]);
+    }
+
+    //Update Task
+    public function update($id){
+        return 'hello';
     }
 }
