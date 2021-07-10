@@ -5003,8 +5003,8 @@ input[type=button].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #6cb2eb;
+  border-bottom: 1px solid #6cb2eb;
 }
 
 .card-header:first-child {
@@ -10911,5 +10911,16 @@ a.text-dark:focus {
 }
 ul li{
   list-style-type: none;
+}
+.card-header{
+  color: #fff;
+}
+.card-header a{
+  color: #fff;
+  font-size: 17px;
+  margin: 12px;
+}
+.card-header a:hover{
+  text-decoration: none;
 }
 

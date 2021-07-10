@@ -53,7 +53,19 @@ class TaskController extends Controller
     }
 
     //Update Task
-    public function update($id){
+    public function update(Request $request, $id){
+        $task = Task::find($id);
+
+        $task->task_name = is_null($request->task_name) ? $task->task_name : $request->task_name;
+        $task->priority = is_null($request->task_priority) ? $task->priority : $request->task_priority;
+        $task->save();
+
+        //redirect back
+        return redirect()->route('alltasks')->with('success', 'Task successfully Updated');
+      
+    }
+
+    public function delete($id){
         return 'hello';
     }
 }

@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }} | <a href="{{route('allprojects')}}">My Projects</a> | <a href="{{route('alltasks')}}">All Task</a></div>
+                <div class="card-header"><a href="{{route('home')}}">Dashboard</a> | <a href="{{route('allprojects')}}">My Projects</a> | <a href="{{route('alltasks')}}">All Task</a></div>
 
                 <div class="card-body">
                     @include('layouts.messages')
@@ -41,12 +41,12 @@
                                             <td><a class="btn btn-danger" href="{{route('delete_task', $task->id)}}" onclick="
                                                 event.preventDefault();
                                                 if(confirm('are you sure you want to delete task')){
-                                                    document.write('hello');
+                                                    document.getElementById('form-delete-{{$task->id}}').submit();
                                                 }
                                                 
                                                 
                                                 "><i class="icofont icofont-trash"></i></a></td>
-                                            <form action="{{route('delete_task', $task->id)}}" id="delete-form" method="POST">
+                                            <form style="display: none" action="{{route('delete_task', $task->id)}}" method="POST"  id="{{'form-delete-'.$task->id}}" >
                                                 @csrf
                                                 @method('delete')
                                             </form>
