@@ -18,7 +18,7 @@
                                <h2 class="ml-3">All Tasks</h2>
                                @if ($tasks->count() > 0)
                                     @foreach ($tasks as $task)
-                                        <p class="ml-3">{{$task->task_name}}</p>
+                                        <div class="ml-3"><i class="icofont icofont-list"></i> {{$task->task_name}}</div>
                                     @endforeach
                                 @else
                                     <p>You do not have any tasks on this project yet..please add some below</p>

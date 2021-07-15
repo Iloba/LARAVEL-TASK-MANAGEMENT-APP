@@ -18,6 +18,12 @@
                             <button type="submit" class="btn btn-info">Create Project</button>
                         </form>
                     </div>
+                    <h3 class="mb-3 text-center">All my projects</h3>
+                    <div class="all-projects p-4">
+                        <select name="" class="form-control" id="">
+                            <option value="one">Hello</option>
+                        </select>
+                    </div>
 
                 </div>
             </div>
