@@ -33,7 +33,7 @@ class TaskController extends Controller
 
     //get all tasks by project relationship
     public function getAll(){
-        $tasks = Project::find(9)->tasks;
+        $tasks = Task::all();
 
         return view('pages.tasks', [
             'tasks' => $tasks

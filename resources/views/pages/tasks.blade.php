@@ -31,11 +31,12 @@
                                             </th>
                                         </tr>
                                 </thead>
+                                
                                 <tbody>
                                     @foreach ($tasks  as $task)
                                         <tr>
                                             <td>{{$task->id}}</td>
-                                            <td><div class="card p-3 shadow-sm">{{$task->task_name}}</div></td>
+                                            <td>{{$task->task_name}}</td>
                                             <td>{{$task->priority}}</td>
                                             <td><a class="btn btn-info" href="{{route('edit_task', $task->id)}}"><i class="icofont icofont-edit"></i></a></td>
                                             <td>
