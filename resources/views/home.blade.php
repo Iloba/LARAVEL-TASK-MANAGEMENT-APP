@@ -18,13 +18,21 @@
                             <button type="submit" class="btn btn-info">Create Project</button>
                         </form>
                     </div>
-                    <h3 class="mb-3 text-center">All my projects</h3>
-                    <div class="all-projects p-4">
-                        <select name="" class="form-control" id="">
-                            <option value="one">Hello</option>
-                        </select>
-                    </div>
-
+                    @if ($projects->count() > 0)
+                        <h3 class="mb-3 text-center">Select Project to View Task</h3>
+                        <div class="all-projects p-4">
+                            <select name="" class="form-control" id="">
+                                @foreach ($projects as $project)
+                                <option value="{{$project->project_name}}">{{$project->project_name}}</option>
+                                @endforeach
+                                
+                            </select>
+                        </div>
+                    @else
+                    <p>You do not have any projects</p>
+                    @endif
+                    
+                  
                 </div>
             </div>
         </div>

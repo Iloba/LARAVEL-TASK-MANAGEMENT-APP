@@ -15,7 +15,7 @@ class UserProjectController extends Controller
         //get user id
         $userId = Auth::user()->id;
         //get all projects
-        $projects = User::find($userId)->projects()->paginate(10);
+        $projects = User::find($userId)->projects()->paginate(3);
 
 
        
@@ -25,6 +25,8 @@ class UserProjectController extends Controller
             
         ]);
     }
+
+    
 
    
 

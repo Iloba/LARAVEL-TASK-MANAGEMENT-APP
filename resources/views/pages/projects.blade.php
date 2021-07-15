@@ -42,7 +42,7 @@
                         <p class="text-secondary text-center">You dont have any projects</p>
                         @endif
                     </div>
-
+                    {{$projects->links()}}
                 </div>
             </div>
         </div>
