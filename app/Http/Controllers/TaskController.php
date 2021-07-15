@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ class TaskController extends Controller
          $task->task_name = $request->task_name;
          $task->priority = $request->task_priority;
          $task->project_id = $projectId->id;
+         $task->user_id = Auth::user()->id;
 
          $task->save();
 
@@ -33,7 +35,10 @@ class TaskController extends Controller
 
     //get all tasks by project relationship
     public function getAll(){
-        $tasks = Task::all();
+
+        $userId = Auth::user()->id;
+
+        $tasks = User::find($userId)->tasks;
 
         return view('pages.tasks', [
             'tasks' => $tasks

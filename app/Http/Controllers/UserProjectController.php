@@ -18,12 +18,11 @@ class UserProjectController extends Controller
         $projects = User::find($userId)->projects()->paginate(10);
 
 
-        //get all tasks related to projects
-        $tasks = Project::find(10)->tasks;
+       
        
         return view('pages.projects', [
             'projects' => $projects,
-            'tasks' => $tasks
+            
         ]);
     }
 

@@ -15,8 +15,16 @@
                             <div class="card bg-info text-light shadow mb-4 p-3">
                                <h2> <i style="font-size: 30px;" class="icofont icofont-calendar"></i> {{$project->project_name}}</h2> 
                                <p class="ml-3"> {{$project->project_description}}</p>
+                               <h2 class="ml-3">All Tasks</h2>
+                               @if ($tasks->count() > 0)
+                                    @foreach ($tasks as $task)
+                                        <p class="ml-3">{{$task->task_name}}</p>
+                                    @endforeach
+                                @else
+                                    <p>You do not have any tasks on this project yet..please add some below</p>
+                                @endif
                             </div>
-                            {{-- {{$tasks}} --}}
+                           
                             @include('layouts.messages')
                             
                            <div class="bg-primary p-4 shadow mt-5">

@@ -26,7 +26,7 @@ class ProjectController extends Controller
         ]);
 
         //Redirect back with message
-        return redirect()->back()->with('success', 'Project Created Succcessfully');
+        return redirect()->route('allprojects')->with('success', 'Project Created Succcessfully');
     }
 
 
@@ -36,9 +36,14 @@ class ProjectController extends Controller
     //Show Project
     public function show_project($id){
         $project = Project::find($id);
+    
+
+        //get all tasks related to project
+        $tasks = Project::find($id)->tasks;
 
         return view('pages.project_page', [
             'project' => $project,
+            'tasks' => $tasks
             
         ]);
     }
