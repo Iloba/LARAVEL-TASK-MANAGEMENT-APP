@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserProjectController;
+use App\Http\view\composers\TasksComposer;
+use Illuminate\View\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,8 @@ Route::prefix('/home')->group(function(){
     //Delete Task
     Route::delete('/tasks/{id}/delete', [TaskController::class, 'delete'])->name('delete_task');
 
+    //get tasks from projects dropdown
+    Route::post('/{id}', [TasksComposer::class, 'tt'])->name('getdata');
 
 
 });
