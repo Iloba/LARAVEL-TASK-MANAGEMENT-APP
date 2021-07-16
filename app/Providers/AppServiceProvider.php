@@ -34,7 +34,6 @@ class AppServiceProvider extends ServiceProvider
         //use bootstrap
         Paginator::usebootstrap();
 
-        View::composer
-        ('home', ProjectsComposer::class);
+        View::composer('home', ProjectsComposer::class);
     }
 }
