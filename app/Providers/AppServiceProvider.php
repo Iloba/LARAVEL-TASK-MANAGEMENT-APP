@@ -6,10 +6,9 @@ use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 use App\Http\View\Composers\ProjectsComposer;
-use App\Http\Controllers\UserProjectController;
+
 
 
 class AppServiceProvider extends ServiceProvider
@@ -31,9 +30,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //use bootstrap
+        //use bootstrap for pagination
         Paginator::usebootstrap();
 
+
+        //pass data from the Http/Views/Composer/ProjectsComposer Class
         View::composer('home', ProjectsComposer::class);
     }
 }

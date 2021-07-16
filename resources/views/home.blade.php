@@ -18,10 +18,12 @@
                             <button type="submit" class="btn btn-info">Create Project</button>
                         </form>
                     </div>
+                    {{-- Data was passed from a view composer --}}
                     @if ($projects->count() > 0)
                         <h3 class="mb-3 text-center">Select Project to View Task</h3>
                         <div class="all-projects p-4">
-                            <select name="" class="form-control" id="">
+                            <select name="" class="form-control" id="projects-dropdown">
+                                <option value="--Select--">--Select--</option>
                                 @foreach ($projects as $project)
                                 <option value="{{$project->project_name}}">{{$project->project_name}}</option>
                                 @endforeach

@@ -20,7 +20,12 @@ class ProjectsComposer
      */
     public function compose(View $view)
     {
+
+        //get user id
         $user = Auth::user()->id;
-        $view->with('projects', User::find($user)->projects()->get());
+        $projects = User::find($user)->projects()->get();
+
+        //pass data to app service provider
+        $view->with('projects', $projects);
     }
 }
