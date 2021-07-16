@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
+use App\Http\View\Composers\ProjectsComposer;
 use App\Http\Controllers\UserProjectController;
 
 
@@ -32,19 +34,7 @@ class AppServiceProvider extends ServiceProvider
         //use bootstrap
         Paginator::usebootstrap();
 
-
-
-         //get user id
-        //  $userId = Auth::user()->id;
-         //get all projects
-     
- 
- 
-
-        $projects = User::find(1)->projects()->get();
-       
-        //share data to all views
-        View::share('projects', $projects);
-    
+        View::composer
+        ('home', ProjectsComposer::class);
     }
 }
