@@ -6,6 +6,7 @@ use App\Models\Task;
 use App\Models\User;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
@@ -73,7 +74,14 @@ class TaskController extends Controller
     public function delete($id){
         $task = Task::find($id);
         
+        //reorder tasks when deleted
+        Task::where('priority', '>', $task->priority)->update(
+            ['priority' => \DB::raw('priority - 1')]
+        );
+
         $task->delete();
+
+        
 
         //redirect back
         return redirect()->route('alltasks')->with('success', 'Task successfully Deleted');
