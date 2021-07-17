@@ -21,6 +21,9 @@
 
     {{-- Icofont --}}
     <link rel="stylesheet" href="{{asset('icofont/icofont/icofont.min.css')}}">
+
+    {{-- Livewire styles --}}
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -82,5 +85,7 @@
             @yield('content')
         </main>
     </div>
+@livewireScripts
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 </body>
 </html>
