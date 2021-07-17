@@ -23,6 +23,8 @@ class ProjectsComposer
 
         //get user id
         $user = Auth::user()->id;
+
+        //get projects
         $projects = User::find($user)->projects()->get();
 
         //pass data to app service provider

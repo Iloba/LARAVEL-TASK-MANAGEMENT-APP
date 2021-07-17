@@ -23,14 +23,18 @@
                         <h3 class="mb-3 text-center">Select Project to View Task</h3>
                         <div class="all-projects p-4">
                             <select onchange="event.preventDefault();
-                            document.getElementById({{'project-form-'.$project->id}}).submit();" name="" class="form-control" id="projects-dropdown">
+                                document.getElementById('project-form').submit();" name="" class="form-control" id="projects-dropdown">
                                 <option value="--Select--">--Select--</option>
                                 @foreach ($projects as $project)
                                 <option  value="{{$project->project_name}}">{{$project->project_name}}</option>
-                                <form class="d-none" method="POST" action="{{route('getdata', $project->id)}}" id="{{'project-form-'.$project->id}}">
+                                
+                                @endforeach
+                                @foreach ($projects as $project)
+                                <form class="d-none" method="POST" action="{{route('getdata', $project->id)}}" id="project-form">
                                     @csrf 
                                 </form>
                                 @endforeach
+                               
                             </select>
                             
                         </div>

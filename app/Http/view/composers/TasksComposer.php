@@ -23,10 +23,10 @@ class TasksComposer
     {
 
         
-        $tasks = Project::find(1)->tasks;
+        // $tasks = Project::find(1)->tasks;
 
-        //pass data to app service provider
-        $view->with('tasks', $tasks);
+        // //pass data to app service provider
+        // $view->with('tasks', $tasks);
     }
 
     public function tt(){
