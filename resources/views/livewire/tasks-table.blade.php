@@ -10,18 +10,11 @@
                         <th>
                             Task Name
                         </th>
-                        <th>
-                            Project
-                        </th>
+                        
                         <th>
                             Task Priority
                         </th>
-                        <th>
-                            Edit
-                        </th>
-                        <th>
-                            Delete
-                        </th>
+                       
                     </tr>
             </thead>
             
@@ -31,9 +24,9 @@
                         <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
                             {{-- <td>{{$task->id}}</td> --}}
                             <td>{{$task->task_name}}</td>
-                            <td>{{$task->project_id}}</td>
+                          
                             <td>{{$task->priority}}</td>
-                            <td><a class="btn btn-info" href="{{route('edit_task', $task->id)}}"><i class="icofont icofont-edit"></i></a></td>
+                            {{-- <td><a class="btn btn-info" href="{{route('edit_task', $task->id)}}"><i class="icofont icofont-edit"></i></a></td>
                             <td>
                                 <a onclick="
                                 event.preventDefault();
@@ -51,7 +44,7 @@
                             <form style="display: none;" action="{{route('delete_task', $task->id)}}" method="POST"  id="{{'form-delete-'.$task->id}}" >
                                 @csrf
                                 @method('delete')
-                            </form>
+                            </form> --}}
                         </tr>
                     @endforeach
 
