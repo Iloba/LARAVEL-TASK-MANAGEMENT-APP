@@ -14,9 +14,9 @@
                             <form action="{{route('update_project', $project->id)}}" method="POST">
                                 @method('put')
                                 @csrf
-                                <input type="text" class="form-control mb-3" name="task_name" value="{{$project->project_name}}"> 
-                                <input type="text" class="form-control mb-3" name="task_priority" value="{{$project->project_description}}"> 
-                                <button type="submit" class="btn btn-info">Update Task</button>
+                                <input type="text" class="form-control mb-3" name="project_name" value="{{$project->project_name}}"> 
+                                <input type="text" class="form-control mb-3" name="project_description" value="{{$project->project_description}}"> 
+                                <button type="submit" class="btn btn-info">Update Project</button>
                             </form>
                         </div>
                        

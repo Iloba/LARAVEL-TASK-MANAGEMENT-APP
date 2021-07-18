@@ -58,7 +58,28 @@ class ProjectController extends Controller
     }
 
     //Update Project
-    public function update($id){
+    public function update(Request $request, $id){
+        //Validate form request
+        $request->validate([
+            'project_name' => 'required',
+            'project_description' => 'required'
+        ]);
+
+        //Update
+        $project = Project::find($id);
+        $project->project_name = is_null($request->project_name) ? $project->project_name : $request->project_name;
+        $project->project_description = is_null($request->project_description) ? $project->project_description : $request->project_description;
+        $project->save();
+
+
+        //Redirect back with message
+        return redirect()->route('allprojects')->with('success', 'Project Updated Succcessfully');
+
+       
+
+    }
+
+    public function delete(){
         
     }
 
