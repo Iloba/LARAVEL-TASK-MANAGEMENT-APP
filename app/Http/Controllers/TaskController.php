@@ -95,6 +95,6 @@ class TaskController extends Controller
         
 
         //redirect back
-        return redirect()->route('alltasks')->with('success', 'Task successfully Deleted');
+        return redirect()->back()->with('success', 'Task successfully Deleted');
     }
 }

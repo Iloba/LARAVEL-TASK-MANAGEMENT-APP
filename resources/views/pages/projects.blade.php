@@ -24,7 +24,7 @@
                                     </div>
                                    
                                     <div>   
-                                        <a class="btn btn-info" href="#"> <i class="icofont icofont-edit text-light"></i></a>
+                                        <a class="btn btn-info" href="{{route('edit_project', $project->id)}}"> <i class="icofont icofont-edit text-light"></i></a>
                                     </div>
 
                                     <div>

@@ -55,6 +55,12 @@ Route::prefix('/home')->group(function(){
     //get tasks from projects dropdown
     Route::post('/{id}', [TasksComposer::class, 'tt'])->name('getdata')->middleware('auth');
 
+    //Edit Project
+    Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('edit_project')->middleware('auth');
+
+    //Update Project
+    Route::put('/projects/{id}/update', [ProjectController::class, 'update'])->name('update_project')->middleware('auth');
+
 
 });
 

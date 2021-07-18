@@ -48,6 +48,20 @@ class ProjectController extends Controller
         ]);
     }
 
+    //edit Project
+    public function edit($id){
+        $project = Project::find($id);
+
+        return view('pages.edit_project',[
+            'project' => $project
+        ]);
+    }
+
+    //Update Project
+    public function update($id){
+        
+    }
+
 
     
 
