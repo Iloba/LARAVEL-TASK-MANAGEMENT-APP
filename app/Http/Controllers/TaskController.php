@@ -19,13 +19,24 @@ class TaskController extends Controller
             'task_priority' => 'required'
         ]);
 
-        $projectId = Project::find($id);
+
+        //get project ID
+        $project = Project::find($id);
+
+        //check if task priority already exists
+        if(DB::table('tasks')
+        ->where('priority', '=', $request->task_priority)
+        ->where('project_id', '=', $project->id)
+        ->exists()
+         ){
+            return back()->with('error', 'A Task already has that priority');
+         }
 
          //Create Task
          $task = new Task;
          $task->task_name = $request->task_name;
          $task->priority = $request->task_priority;
-         $task->project_id = $projectId->id;
+         $task->project_id = $project->id;
          $task->user_id = Auth::user()->id;
 
          $task->save();

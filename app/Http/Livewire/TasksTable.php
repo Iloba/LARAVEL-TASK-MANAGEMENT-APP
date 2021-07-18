@@ -17,18 +17,16 @@ class TasksTable extends Component
         //fetch tasks again
         $userId = Auth::user()->id;
 
-        $tasks = User::find($userId)->tasks;
+        $tasks = User::find($userId)->tasks()->orderBy('created_at')->get();
 
 
-        return view('livewire.tasks-table', [
-            'tasks' => $tasks
-        ]);
+        return view('livewire.tasks-table', compact('tasks'));
     }
 
 
     //update task order
     public function updateTaskOrder($tasks){
-        dd($tasks);
+     
         foreach($tasks as $task){
             Task::find($task['value'])->update(['priority' => $task['order']]);
         }
