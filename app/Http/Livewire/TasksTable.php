@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class TasksTable extends Component
 {
 
-    // public $tasks;
 
     public function render()
     {
         //fetch tasks again
         $userId = Auth::user()->id;
 
-        $tasks = User::find($userId)->tasks()->orderBy('priority')->get();
+         $tasks = User::find($userId)->tasks()->orderBy('priority')->get();
 
 
         return view('livewire.tasks-table', compact('tasks'));
