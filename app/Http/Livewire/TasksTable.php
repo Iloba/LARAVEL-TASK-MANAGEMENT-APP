@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class TasksTable extends Component
 {
 
-    public $tasks;
+    // public $tasks;
 
     public function render()
     {
         //fetch tasks again
         $userId = Auth::user()->id;
 
-        $tasks = User::find($userId)->tasks()->orderBy('created_at')->get();
+        $tasks = User::find($userId)->tasks()->orderBy('priority')->get();
 
 
         return view('livewire.tasks-table', compact('tasks'));
@@ -26,9 +26,12 @@ class TasksTable extends Component
 
     //update task order
     public function updateTaskOrder($tasks){
-     
+        // dd($tasks);
         foreach($tasks as $task){
-            Task::find($task['value'])->update(['priority' => $task['order']]);
+            $get_task = Task::find($task['value']);
+            $get_task->priority = $task['order'];
+            $get_task->save();
+            
         }
     }
 }
