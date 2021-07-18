@@ -61,6 +61,9 @@ Route::prefix('/home')->group(function(){
     //Update Project
     Route::put('/projects/{id}/update', [ProjectController::class, 'update'])->name('update_project')->middleware('auth');
 
+    //Delete Project
+    Route::delete('/projects/{id}/delete', [ProjectController::class, 'delete'])->name('delete_project')->middleware('auth');
+
 
 });
 

@@ -28,12 +28,22 @@
                                     </div>
 
                                     <div>
-                                        <a class="btn btn-danger" href="#"> <i class="icofont icofont-trash"></i></a> 
+                                        <a class="btn btn-danger" onclick="
+                                        event.preventDefault();
+                                        if(confirm('are you sure you want to delete task')){
+                                            document.getElementById('form-delete-{{$project->id}}').submit();
+                                        }
+                                        
+                                        
+                                        "; href="{{route('delete_project', $project->id)}}"> <i class="icofont icofont-trash"></i></a> 
                                     </div>
                                    
                                 </div>
-                              
-                                
+                               
+                                <form style="display: none;" action="{{route('delete_project', $project->id)}}" method="POST"  id="{{'form-delete-'.$project->id}}" >
+                                    @csrf
+                                    @method('delete')
+                                </form> 
                                     
                                     
                             </div>
