@@ -29,43 +29,47 @@ Route::post('/home', [ProjectController::class, 'create'])->name('create_project
 
 
 //Prefix all other routes
-Route::prefix('/home')->group(function(){
+Route::group(['prefix' => '/home', 'middleware' => 'auth'], function(){
 
-    //All projects
-    Route::get('/projects', [UserProjectController::class, 'getAllProjects'])->name('allprojects')->middleware('auth');
+     //All projects
+     Route::get('/projects', [UserProjectController::class, 'getAllProjects'])->name('allprojects');
 
-    //Show Projects
-    Route::get('/project/{id}', [ProjectController::class, 'show_project'])->name('show_project')->middleware('auth');
-
-    //Add task to  projects
-    Route::post('/project/{id}/task', [TaskController::class, 'create'])->name('add_task')->middleware('auth');
-
-    //get tasks 
-    Route::get('/tasks', [TaskController::class, 'getAll'])->name('alltasks')->middleware('auth');
-
-    //Edit Task
-    Route::get('/tasks/{id}/edit', [TaskController::class, 'editTask'])->name('edit_task')->middleware('auth');
-
-    //Update Task
-    Route::put('/tasks/{id}/update', [TaskController::class, 'update'])->name('update_task')->middleware('auth');
-
-    //Delete Task
-    Route::delete('/tasks/{id}/delete', [TaskController::class, 'delete'])->name('delete_task')->middleware('auth');
-
-    // //get tasks from projects dropdown
-    Route::post('projects/{id}/tasks', [ProjectController::class, 'getTasks'])->name('getTasks')->middleware('auth');
-
-    //Edit Project
-    Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('edit_project')->middleware('auth');
-
-    //Update Project
-    Route::put('/projects/{id}/update', [ProjectController::class, 'update'])->name('update_project')->middleware('auth');
-
-    //Delete Project
-    Route::delete('/projects/{id}/delete', [ProjectController::class, 'delete'])->name('delete_project')->middleware('auth');
-
+     //Show Projects
+     Route::get('/project/{id}', [ProjectController::class, 'show_project'])->name('show_project');
+ 
+     //Add task to  projects
+     Route::post('/project/{id}/task', [TaskController::class, 'create'])->name('add_task');
+ 
+     //get tasks 
+     Route::get('/tasks', [TaskController::class, 'getAll'])->name('alltasks');
+ 
+     //Edit Task
+     Route::get('/tasks/{id}/edit', [TaskController::class, 'editTask'])->name('edit_task');
+ 
+     //Update Task
+     Route::put('/tasks/{id}/update', [TaskController::class, 'update'])->name('update_task');
+ 
+     //Delete Task
+     Route::delete('/tasks/{id}/delete', [TaskController::class, 'delete'])->name('delete_task');
+ 
+     // //get tasks from projects dropdown
+     Route::post('projects/{id}/tasks', [ProjectController::class, 'getTasks'])->name('getTasks');
+ 
+     //Edit Project
+     Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('edit_project');
+ 
+     //Update Project
+     Route::put('/projects/{id}/update', [ProjectController::class, 'update'])->name('update_project');
+ 
+     //Delete Project
+     Route::delete('/projects/{id}/delete', [ProjectController::class, 'delete'])->name('delete_project');
+ 
 
 });
+
+   
+
+
 
 
 
