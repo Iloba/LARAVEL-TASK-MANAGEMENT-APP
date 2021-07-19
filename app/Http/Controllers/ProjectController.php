@@ -105,9 +105,5 @@ class ProjectController extends Controller
         //Redirect back with message
         return redirect()->route('allprojects')->with('success', 'Project Deleted Succcessfully');
     }
-
-
-    
-
    
 }

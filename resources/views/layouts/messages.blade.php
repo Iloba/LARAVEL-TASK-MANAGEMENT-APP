@@ -12,11 +12,7 @@
     
 @endif
 
-@if (session('task_data'))
-    <div class="alert alert-success">
-        {{session('task_data', $tasks)}}
-    </div>
-@endif
+
 
 {{-- loop through laravels error --}}
 @if ($errors->all())

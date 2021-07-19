@@ -81,7 +81,7 @@
                 <form action="{{route('add_task', $project->id)}}" method="POST">
                     @csrf
                     <input type="text" name="task_name" class="form-control mb-3" placeholder="Enter Task">
-                    <input type="text" name="task_priority" class="form-control mb-3" placeholder="Enter Task Priority">
+                    <input type="number" name="task_priority" class="form-control mb-3" placeholder="Enter Task Priority">
                     <button type="submit" class="btn btn-light">Add Task</button>
                 </form>
             </div>
