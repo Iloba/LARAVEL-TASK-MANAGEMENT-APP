@@ -39,6 +39,6 @@ class AppServiceProvider extends ServiceProvider
         View::composer('home', ProjectsComposer::class);
 
         //pass data from the Http/Views/Composer/ProjectsComposer Class
-        View::composer('home', TasksComposer::class);
+        // View::composer('home', TasksComposer::class);
     }
 }

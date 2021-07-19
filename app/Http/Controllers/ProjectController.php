@@ -19,7 +19,7 @@ class ProjectController extends Controller
             'project_description' => 'required'
         ]);
 
-        //create project based on user
+        //create project based on user relationship
         $request->user()->projects()->create([
             'project_name' => $request->project_name,
             'project_description' => $request->project_description
@@ -47,6 +47,24 @@ class ProjectController extends Controller
             
         ]);
     }
+
+
+    //get tasks
+    public function getTasks(Request $request){
+
+        $request->validate([
+            'project_id' => 'required'
+        ]);
+
+        $tasks = Project::find($request->project_id)->tasks;
+        return view('pages.dropdown_tasks', [
+            'tasks' => $tasks
+        ]);
+    }
+
+
+
+    
 
     //edit Project
     public function edit($id){

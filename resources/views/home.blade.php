@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header"><a href="{{route('home')}}">Dashboard</a> | <a href="{{route('allprojects')}}">My Projects</a> | <a href="{{route('alltasks')}}">My Tasks</a></div>
+    @include('layouts.dashboard-header')
 
                 <div class="card-body">
                     @include('layouts.messages')
@@ -18,31 +14,23 @@
                             <button type="submit" class="btn btn-info">Create Project</button>
                         </form>
                     </div>
-                    {{-- Data was passed from a view composer --}}
-                    @if ($projects->count() > 0)
-                        <h3 class="mb-3 text-center">Select Project to View Task</h3>
-                        <div class="all-projects p-4">
-                            <select onchange="event.preventDefault();
-                                document.getElementById('project-form').submit();" name="" class="form-control" id="projects-dropdown">
-                                <option value="--Select--">--Select--</option>
+                    <div class="p-3">
+                        <h3 class="text-center mb-4">Select Project to view Task</h3>
+                        @foreach ($projects as $project)
+                        <form action="{{route('getTasks', $project->id)}}" method="POST">
+                        @endforeach
+                      
+                            @csrf
+                            <select class="form-control mb-4" name="project_id" id="">
                                 @foreach ($projects as $project)
-                                <option  value="{{$project->project_name}}">{{$project->project_name}}</option>
-                                
+                                    <option value="{{$project->id}}">{{$project->project_name}}</option>
                                 @endforeach
-                                @foreach ($projects as $project)
-                                <form class="d-none" method="POST" action="{{route('getdata', $project->id)}}" id="project-form">
-                                    @csrf 
-                                </form>
-                                @endforeach
-                               
                             </select>
-                            
-                        </div>
-                    @else
-                    <p>You do not have any projects</p>
-                    @endif
-                    {{-- {{$tasks}} --}}
-                  
+                            <button class="btn btn-success mb-4">
+                                 View task
+                            </button>
+                        </form>    
+                    </div>
                 </div>
             </div>
         </div>

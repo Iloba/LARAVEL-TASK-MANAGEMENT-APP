@@ -7,12 +7,11 @@ namespace App\Http\View\Composers;
 use App\Models\User;
 use App\Models\Project;
 use Illuminate\View\View;
+use App\Http\Controllers\TaskController;
 
 
-class TasksComposer
+class TasksComposer extends TaskController
 {
-  
-
     /**
      * Bind data to the view.
      *
@@ -22,14 +21,18 @@ class TasksComposer
     public function compose(View $view)
     {
 
-        
-        // $tasks = Project::find(1)->tasks;
+        //Instantiate imported TaskController class
+        // $task = new TaskController;
 
-        // //pass data to app service provider
+        //Access getAllData() Method on the imported class
+        // $tasks = $task->getAllData();
+       
+
+        //pass data to app service provider
         // $view->with('tasks', $tasks);
     }
 
-    public function tt(){
-        return 'hello';
-    }
+    // public function tt(){
+     
+    // }
 }

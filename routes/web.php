@@ -52,8 +52,8 @@ Route::prefix('/home')->group(function(){
     //Delete Task
     Route::delete('/tasks/{id}/delete', [TaskController::class, 'delete'])->name('delete_task')->middleware('auth');
 
-    //get tasks from projects dropdown
-    Route::post('/{id}', [TasksComposer::class, 'tt'])->name('getdata')->middleware('auth');
+    // //get tasks from projects dropdown
+    Route::post('projects/{id}/tasks', [ProjectController::class, 'getTasks'])->name('getTasks')->middleware('auth');
 
     //Edit Project
     Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('edit_project')->middleware('auth');

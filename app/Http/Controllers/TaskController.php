@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+
+    
     //create task
     public function create(Request $request, $id, Project $project){
         //Validate
@@ -50,7 +52,7 @@ class TaskController extends Controller
 
         $userId = Auth::user()->id;
 
-        $tasks = User::find($userId)->tasks;
+       $tasks = User::find($userId)->tasks;
 
         return view('pages.tasks', [
             'tasks' => $tasks
@@ -58,12 +60,26 @@ class TaskController extends Controller
       
     }
 
+
+     //get all tasks by project relationship so View composer can extend it
+     public function getAllData(){
+
+        $userId = Auth::user()->id;
+
+       $tasks = User::find($userId)->tasks;
+
+       return $tasks;
+      
+    }
+
+
+
+
     //Edit task
     public function editTask($id){
         $task = Task::find($id);
 
-       
-
+    
         return view('pages.edit_task', [
             'task' => $task
         ]);
