@@ -3,6 +3,8 @@
 #if the above stepp was followed you will have to register as a new user and begin to create projects
 After a project is created, view the project to be able to create tasks under the project
 
+<!-- INTERNET MUST BE ACCESSED FOR DRAG AND DROP TO WORK (I MADE USE OF LARAVEL LIVE WIRE SORTABLE CDN) -->
+
 <!-- Projects -->
 #Once signed in a user can be able to create a project from the dashboard
 #To access all Projects - Click on My Projects on the navigation (All tasks associated with a project are listed below the project. A user can also add tasks under a project)
