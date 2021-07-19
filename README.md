@@ -17,6 +17,7 @@ NB: tasks can not be created at random, they can only be created under a project
 #To access all tasks - Click on My Tasks on the navigation (Tasks are sortable using the drag and drop feature). Tasks are sorted by Priority
 #All tasks can be edited and deleted by the user
 
-<!-- Link -->
+<!-- Link to github repository-->
+https://github.com/Iloba/LARAVEL-TASK-MANAGEMENT-APP
 
 
