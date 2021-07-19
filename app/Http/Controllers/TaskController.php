@@ -15,7 +15,7 @@ class TaskController extends Controller
     
     //create task
     public function create(Request $request, $id, Project $project){
-        //Validate
+        //Validate request
         $request->validate([
             'task_name' => 'required',
             'task_priority' => 'required'
@@ -50,10 +50,13 @@ class TaskController extends Controller
     //get all tasks by project relationship
     public function getAll(){
 
+        //get authenticated user's id
         $userId = Auth::user()->id;
 
-       $tasks = User::find($userId)->tasks;
+        //get tasks
+         $tasks = User::find($userId)->tasks;
 
+         //return view with tasks
         return view('pages.tasks', [
             'tasks' => $tasks
         ]);
@@ -61,25 +64,12 @@ class TaskController extends Controller
     }
 
 
-     //get all tasks by project relationship so View composer can extend it
-     public function getAllData(){
-
-        $userId = Auth::user()->id;
-
-       $tasks = User::find($userId)->tasks;
-
-       return $tasks;
-      
-    }
-
-
-
 
     //Edit task
     public function editTask($id){
         $task = Task::find($id);
 
-    
+        //return view with task
         return view('pages.edit_task', [
             'task' => $task
         ]);
@@ -98,6 +88,7 @@ class TaskController extends Controller
       
     }
 
+    //Delete Task
     public function delete($id){
         $task = Task::find($id);
         
@@ -106,10 +97,10 @@ class TaskController extends Controller
             ['priority' => \DB::raw('priority - 1')]
         );
 
+        //Delete Tasks
         $task->delete();
 
-        
-
+    
         //redirect back
         return redirect()->back()->with('success', 'Task successfully Deleted');
     }

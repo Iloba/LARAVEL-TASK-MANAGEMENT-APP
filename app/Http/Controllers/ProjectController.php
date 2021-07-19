@@ -41,6 +41,7 @@ class ProjectController extends Controller
         //get all tasks related to project
         $tasks = Project::find($id)->tasks;
 
+        //return view with tasks
         return view('pages.project_page', [
             'project' => $project,
             'tasks' => $tasks
@@ -49,14 +50,12 @@ class ProjectController extends Controller
     }
 
 
-    //get tasks
+    //get tasks under project and display from dropdown
     public function getTasks(Request $request){
-
-        $request->validate([
-            'project_id' => 'required'
-        ]);
-
+        //get tasks using relationship
         $tasks = Project::find($request->project_id)->tasks;
+
+        //return view with tasks
         return view('pages.dropdown_tasks', [
             'tasks' => $tasks
         ]);
@@ -98,8 +97,10 @@ class ProjectController extends Controller
     }
 
     public function delete($id){
+        //find project by ID
         $project = Project::find($id);
 
+        //delete project
         $project->delete();
 
         //Redirect back with message

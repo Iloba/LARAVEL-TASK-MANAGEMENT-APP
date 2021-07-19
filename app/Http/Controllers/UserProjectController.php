@@ -17,9 +17,7 @@ class UserProjectController extends Controller
         //get all projects
         $projects = User::find($userId)->projects()->paginate(3);
 
-
-       
-       
+        //Return view with projects
         return view('pages.projects', [
             'projects' => $projects,
             
